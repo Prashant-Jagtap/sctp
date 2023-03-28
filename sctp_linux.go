@@ -46,7 +46,7 @@ func getsockopt(fd int, optname, optval, optlen uintptr) (uintptr, uintptr, erro
 		SOL_SCTP,
 		optname,
 		optval,
-		optlen,
+		uintptr(unsafe.Pointer(&optlen)),
 		0)
 	if errno != 0 {
 		return r0, r1, errno
